@@ -1,0 +1,82 @@
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    width: 28rem;
+    padding: 2.5rem 3rem;
+    background-color: var(--white);
+}
+
+form a {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.guest-btn {
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background-color: inherit;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    font-size: 0.9rem;
+}
+
+.auth-btn {
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.input-container {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.input-container input{
+    /* width: 20rem; */
+    padding: 0.5rem;
+}
+
+.user-auth {
+    /* margin: 1.5rem; */
+    font-size: small;
+}
+
+.login-remember {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-title{
+    text-align: center;
+    /* color: var(--primary); */
+}
+.terms-condition{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}

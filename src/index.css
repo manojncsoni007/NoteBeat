@@ -8,6 +8,7 @@
 
 :root{
  --primary: #3B82F6;
+ --white: #ffffff;
  --black: #000000;
 }
 
@@ -17,6 +18,10 @@ html{
 
 body {
   font-family: 'Montserrat', sans-serif;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 800px) {
