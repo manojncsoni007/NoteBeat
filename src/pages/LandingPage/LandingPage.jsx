@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './LandingPage.css'
 import { hero } from '../../assets'
 
@@ -12,7 +13,7 @@ const LandingPage = () => {
                         <h3>Take Note With NoteBeat <br /> A Note Taking app</h3>
                         <p>Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.</p>
                     </div>
-                    <button className='header_btn'>Join Now</button>
+                    <Link className='header_btn' to="/home">Start Now</Link>
                 </div>
                 <div className="hero-image">
                     <img src='/hero.svg' alt="hero" />

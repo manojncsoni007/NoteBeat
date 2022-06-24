@@ -35,14 +35,18 @@
 
 .header_btn {
     border: none;
+    text-decoration: none;
     background-color: var(--primary);
-    color: white;
+    color: var(--white);
     padding: 0.8rem;
     width: 10rem;
     cursor: pointer;
     font-size: 1.2rem;
     font-weight: 600;
     border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .black-text {
@@ -59,19 +63,21 @@
     height: 100%;
 }
 
-@media only screen and (max-width:800px){
-    .landing-page{
+@media only screen and (max-width:800px) {
+    .landing-page {
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
         gap: 2rem;
     }
-    .header{
+
+    .header {
         width: 80vw;
         gap: 2rem;
         align-items: center;
     }
-    .hero-image{
+
+    .hero-image {
         max-width: 80vw;
     }
 }
