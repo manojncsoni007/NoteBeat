@@ -1,0 +1,15 @@
+.archive-container {
+    padding: 1rem;
+}
+
+.archive-container h2 {
+    text-align: center;
+}
+
+.archive-note-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+}

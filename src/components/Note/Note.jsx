@@ -5,13 +5,13 @@ import parse from 'html-react-parser';
 import axios from "axios"
 import './Note.css'
 import { useAuth, useFeature } from '../../context';
-import { addToArchive, addToTrash } from '../../service';
+import { addToArchive, addToTrash, deleteFromArchive, restoreFromArchive } from '../../service';
 
 const Note = ({ note }) => {
   const { token } = useAuth();
   const { pathname } = useLocation();
   const { _id, title, content, isPinnedNote, color, priority, tags, created } = note;
-  const { setShowAddNote,featureStateDispatch } = useFeature();
+  const { setShowAddNote, featureStateDispatch } = useFeature();
 
   const pinHandler = (_id) => {
     featureStateDispatch({ type: "TOGGLE_PIN_NOTES", payload: _id })
@@ -20,7 +20,12 @@ const Note = ({ note }) => {
   const addToArchiveHandler = () => {
     addToArchive(_id, note, token, featureStateDispatch)
   }
-
+  const restoreArchiveHandler = () => {
+    restoreFromArchive(_id, token, featureStateDispatch)
+  }
+  const deleteArchiveHandler = () => {
+    deleteFromArchive(_id, token, featureStateDispatch);
+  }
   const addToTrashHandler = () => {
     addToTrash(_id, note, token, featureStateDispatch)
   }
@@ -59,6 +64,12 @@ const Note = ({ note }) => {
                 {/* will do later <i className="fas fa-edit" onClick={() => updateNoteHandler()}></i> */}
                 <i className="fas fa-archive" onClick={() => addToArchiveHandler()}></i>
                 <i className="fas fa-trash" onClick={() => addToTrashHandler()}></i>
+              </>
+            }
+            {pathname === "/archive" &&
+              <>
+                <i className="fas fa-folder-open" onClick={() => restoreArchiveHandler()}></i>
+                <i className="fas fa-trash" onClick={() => deleteArchiveHandler()}></i>
               </>
             }
           </div>

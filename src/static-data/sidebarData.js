@@ -13,7 +13,7 @@ const sidebarData = [
     },
     {
         title: 'Archive',
-        path: '/',
+        path: '/archive',
         icon: 'fas fa-archive',
         _id: 3
     },
