@@ -1,0 +1,22 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    margin-bottom: 3rem;
+    background-color: white;
+    display: flex;
+    padding: 0.8rem 3rem;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1);
+}
+.navbar-title{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.primary-text{
+    color: var(--primary);
+}

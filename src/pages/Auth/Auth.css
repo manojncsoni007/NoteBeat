@@ -1,16 +1,16 @@
 
 .auth-container {
+    margin-top: 6rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 form {
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
     width: 28rem;
-    padding: 2.5rem 3rem;
+    padding: 2rem 3rem;
     background-color: var(--white);
 }
 
@@ -22,7 +22,7 @@ form a {
 .guest-btn {
     display: block;
     width: 100%;
-    margin: 1rem 0;
+    margin: 1.5rem 0 1rem 0;
     padding: 0.5rem;
     border: 1px solid var(--primary);
     color: var(--primary);
@@ -48,20 +48,18 @@ form a {
     font-size: 1rem;
 }
 
-.input-container {
+.auth-input-container {
     margin: 1rem 0;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
 }
 
-.input-container input{
-    /* width: 20rem; */
+.auth-input-container input{
     padding: 0.5rem;
 }
 
 .user-auth {
-    /* margin: 1.5rem; */
     font-size: small;
 }
 
@@ -72,7 +70,6 @@ form a {
 }
 .form-title{
     text-align: center;
-    /* color: var(--primary); */
 }
 .terms-condition{
     display: flex;

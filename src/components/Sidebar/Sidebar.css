@@ -1,0 +1,73 @@
+
+.sidebar{
+    width: 20%;
+    position: fixed;
+    top: 5rem;
+    bottom: 0;
+    left: 0;
+    border-right: 1px solid var(--silver);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y: auto;
+}
+.sidebar ul{
+    list-style: none;
+}
+.sidebar ul li{
+    padding: 0.8rem 2rem;
+    margin: 0.2rem;
+}
+.sidebar ul a{
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--black);
+}
+.sidebar i{
+    color: var(--primary);
+}
+.sidebar ul li:hover{
+    background-color: #EFF6FF;
+    border-radius: 0.5rem;
+}
+.profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem 0 3rem;
+    width: 100%;
+    float: right;
+}
+.profile a{
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 700;
+}
+.profile span{
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+    /* margin-top: -3rem; */
+}
+.profile i{
+    padding-bottom: 1rem;
+    font-size: 1.3rem;
+}
+.profile i{
+    color: black;
+}
+.note-editor-btn{
+    margin-top: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    padding: 0.6rem;
+    border: none;
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: 1.2rem;
+}

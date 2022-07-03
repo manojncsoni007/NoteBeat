@@ -1,0 +1,86 @@
+.add-note{
+   margin: 0 auto;
+    padding: 0.5rem;
+    border: 1px solid var(--silver);
+    width: 50%;
+    border-radius: 0.4rem;
+}
+.note-header{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-right: 0.5rem;
+    margin-bottom: 0.4rem;
+    justify-content: space-between;
+}
+.note-header input{
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid var(--black);
+}
+.note-header span{
+    cursor: pointer;
+    margin-top: 0.3rem;
+}
+.note-text {
+    z-index: 100;
+    border: 1px solid var(--black);
+    /* background-color: var(--white); */
+}
+.note-footer{
+    margin: 0.5rem 0 0 0 ;
+    padding: 0 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.icon-group{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-right: 0.5rem ;
+    gap: 1rem;
+}
+.icon-group i{
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.btn-group{
+    display: flex;
+    gap: 0.7rem;
+}
+.btn-group button{
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+}
+.cancel-btn{
+    border: 1px solid var(--primary);
+    background-color: var(--white);
+    color: var(--primary);
+}
+.add-btn{
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--white);
+}
+.priority-container select{
+    padding: 0.2rem;
+}
+.labels-container{
+    padding: 0.3rem 0.5rem 0 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+.labels-container span{
+    font-size: 0.8rem;
+    padding: 0.3rem;
+    background-color: var(--silver);
+    color: var(--black);
+    border-radius: 3px;
+}
