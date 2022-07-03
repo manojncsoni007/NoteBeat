@@ -19,7 +19,7 @@ const sidebarData = [
     },
     {
         title: 'Trash',
-        path: '/',
+        path: '/trash',
         icon: 'fas fa-trash',
         _id: 4
     },
