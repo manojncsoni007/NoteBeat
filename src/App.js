@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { Homepage, LandingPage, Login, Signup } from "./pages";
+import { Archive, Homepage, LandingPage, Login, Signup } from "./pages";
 import { Navbar, RequiredAuth } from "./components";
 
 
@@ -16,6 +16,11 @@ function App() {
         <Route path="/home" element={
           <RequiredAuth>
             <Homepage />
+          </RequiredAuth>
+        } />
+        <Route path="/archive" element={
+          <RequiredAuth>
+            <Archive />
           </RequiredAuth>
         } />
         <Route path="/login" element={<Login />} />

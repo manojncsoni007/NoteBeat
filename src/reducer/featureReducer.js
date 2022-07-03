@@ -10,6 +10,17 @@ const featureReducer = (state, { type, payload }) => {
                 notes: payload.notes,
                 archive: payload.archives
             }
+        case "RESTORE_FROM_ARCHIVE":
+            return {
+                ...state,
+                notes: payload.notes,
+                archive: payload.archives
+            }
+        case "DELETE_FROM_ARCHIVE":
+            return {
+                ...state,
+                archive: payload
+            }
         case "ADD_TO_TRASH":
             return {
                 ...state,
@@ -34,16 +45,20 @@ const featureReducer = (state, { type, payload }) => {
                 }
             }
         case "FILTER_BY_LABEL":
-                return state.filters.label.includes(payload) ? 
-                {...state, filters: {
-                    ...state.filters,
-                    label:[...state.filters.label].filter(item=>item!==payload)
-                }}
-                :{...state, filters: {
-                    ...state.filters,
-                    label:[...state.filters.label].concat(payload)
-            }};
-            
+            return state.filters.label.includes(payload) ?
+                {
+                    ...state, filters: {
+                        ...state.filters,
+                        label: [...state.filters.label].filter(item => item !== payload)
+                    }
+                }
+                : {
+                    ...state, filters: {
+                        ...state.filters,
+                        label: [...state.filters.label].concat(payload)
+                    }
+                };
+
         case "CLEAR_ALL_FILTERS":
             return {
                 ...state, filters: {
