@@ -1,12 +1,16 @@
 import "./App.css";
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { Homepage, LandingPage, Login, Signup } from "./pages";
-import { RequiredAuth } from "./components";
+import { Navbar, RequiredAuth } from "./components";
 
 
 function App() {
+  const { pathname } = useLocation();
   return (
     <>
+      {pathname !== "/" &&
+        <Navbar />
+      }
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={

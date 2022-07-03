@@ -1,0 +1,19 @@
+.color-palette{
+    background-color: rgb(87, 87, 87);
+    border: 1px solid var(--silver);
+    border-radius: 0.8rem;
+    padding: 0.5rem 1rem;
+    position: absolute;
+    right: 1rem;
+    top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.color-palette span {
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--silver);
+}

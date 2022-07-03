@@ -1,0 +1,16 @@
+.main-section{
+    margin-top: 4rem;
+}
+.grid-container{
+ display: grid;
+ grid-template-columns: 20% 1fr;
+}
+.grid-container section{
+    padding: 1rem 1.5rem;
+}
+.jodit-status-bar{
+   visibility: hidden;
+}
+.jodit-react-container{
+    max-width: 32rem;
+}
