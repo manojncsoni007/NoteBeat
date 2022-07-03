@@ -2,10 +2,9 @@ import React from 'react'
 import { BsPin, BsFillPinFill } from "react-icons/bs";
 import { useLocation } from 'react-router-dom';
 import parse from 'html-react-parser';
-import axios from "axios"
-import './Note.css'
 import { useAuth, useFeature } from '../../context';
-import { addToArchive, addToTrash, deleteFromArchive, restoreFromArchive } from '../../service';
+import { addToArchive, addToTrash, deleteFromArchive, deleteFromTrash, restoreFromArchive, restoreFromTrash } from '../../service';
+import './Note.css'
 
 const Note = ({ note }) => {
   const { token } = useAuth();
@@ -16,7 +15,6 @@ const Note = ({ note }) => {
   const pinHandler = (_id) => {
     featureStateDispatch({ type: "TOGGLE_PIN_NOTES", payload: _id })
   }
-
   const addToArchiveHandler = () => {
     addToArchive(_id, note, token, featureStateDispatch)
   }
@@ -28,6 +26,12 @@ const Note = ({ note }) => {
   }
   const addToTrashHandler = () => {
     addToTrash(_id, note, token, featureStateDispatch)
+  }
+  const restoreTrashHandler = () => {
+    restoreFromTrash(_id, token, featureStateDispatch);
+  }
+  const deleteTrashHandler = () => {
+    deleteFromTrash(_id,token,featureStateDispatch);
   }
 
   return (
@@ -70,6 +74,12 @@ const Note = ({ note }) => {
               <>
                 <i className="fas fa-folder-open" onClick={() => restoreArchiveHandler()}></i>
                 <i className="fas fa-trash" onClick={() => deleteArchiveHandler()}></i>
+              </>
+            }
+            {pathname === "/trash" &&
+              <>
+                <i className="fas fa-trash-restore" onClick={() => restoreTrashHandler()}></i>
+                <i className="fas fa-trash" onClick={() => deleteTrashHandler()}></i>
               </>
             }
           </div>

@@ -27,6 +27,17 @@ const featureReducer = (state, { type, payload }) => {
                 notes: payload.notes,
                 trash: payload.trash
             }
+        case "RESTORE_FROM_TRASH":
+            return {
+                ...state,
+                notes: payload.notes,
+                trash: payload.trash
+            }
+        case "DELETE_FROM_TRASH":
+            return {
+                ...state,
+                trash: payload
+            }
         case "TOGGLE_PIN_NOTES":
             return {
                 ...state, notes: state.notes.map((item) =>

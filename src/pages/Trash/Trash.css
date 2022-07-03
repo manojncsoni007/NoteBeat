@@ -1,13 +1,13 @@
-.archive-container {
+.trash-container {
     padding: 1rem;
 }
 
-.archive-container h2 {
+.trash-container h2 {
     text-align: center;
     font-size: 1.6rem;
 }
 
-.archive-note-container {
+.trash-note-container {
     margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
