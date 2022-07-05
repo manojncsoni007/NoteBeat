@@ -54,11 +54,15 @@
     /* margin-top: -3rem; */
 }
 .profile i{
+    cursor: pointer;
     padding-bottom: 1rem;
     font-size: 1.3rem;
 }
 .profile i{
     color: black;
+}
+.profile i:hover{
+    transform: scale(1.04);
 }
 .note-editor-btn{
     margin-top: 1rem;
