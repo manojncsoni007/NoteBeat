@@ -7,7 +7,7 @@ const sidebarData = [
     },
     {
         title: 'Labels',
-        path: '/',
+        path: '/label',
         icon: 'fas fa-tags',
         _id: 2
     },

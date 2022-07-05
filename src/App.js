@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { Archive, Homepage, LandingPage, Login, Signup, Trash } from "./pages";
+import { Archive, Homepage, Label, LandingPage, Login, Signup, Trash } from "./pages";
 import { Navbar, RequiredAuth } from "./components";
 
 
@@ -18,6 +18,11 @@ function App() {
             <Homepage />
           </RequiredAuth>
         } />
+        <Route path="/label" element={
+          <RequiredAuth>
+            <Label />
+          </RequiredAuth>
+        } />
         <Route path="/archive" element={
           <RequiredAuth>
             <Archive />
@@ -25,7 +30,7 @@ function App() {
         } />
         <Route path="/trash" element={
           <RequiredAuth>
-            <Trash/>
+            <Trash />
           </RequiredAuth>
         } />
         <Route path="/login" element={<Login />} />
