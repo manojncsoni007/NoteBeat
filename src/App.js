@@ -1,13 +1,16 @@
-import "./App.css";
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { Archive, Homepage, Label, LandingPage, Login, Signup, Trash } from "./pages";
+import { Archive, Homepage, Label, LandingPage, Login, Profile, Signup, Trash } from "./pages";
 import { Navbar, RequiredAuth } from "./components";
+import { ToastContainer } from "react-toastify";
+
+import "./App.css";
 
 
 function App() {
   const { pathname } = useLocation();
   return (
     <>
+    <ToastContainer />
       {pathname !== "/" &&
         <Navbar />
       }
@@ -31,6 +34,11 @@ function App() {
         <Route path="/trash" element={
           <RequiredAuth>
             <Trash />
+          </RequiredAuth>
+        } />
+        <Route path="/profile" element={
+          <RequiredAuth>
+            <Profile />
           </RequiredAuth>
         } />
         <Route path="/login" element={<Login />} />

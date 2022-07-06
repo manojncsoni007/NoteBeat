@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { useFeature } from '../../context';
+import { useAuth, useFeature } from '../../context';
 import { sidebarData } from '../../static-data'
+import { showToast } from '../../utils/toast';
 import './Sidebar.css'
 
 const getActiveStyle = ({ isActive }) => ({
@@ -9,8 +10,18 @@ const getActiveStyle = ({ isActive }) => ({
 });
 
 const Sidebar = () => {
-    const { setShowAddNote } = useFeature();;
+    const { user, setUser, setToken, setIsLoggedIn } = useAuth();
+    const { setShowAddNote } = useFeature();
     const { pathname } = useLocation();
+
+    const logoutHandler = () => {
+        setIsLoggedIn(false);
+        setUser(null);
+        setToken("");
+        localStorage.removeItem("token");
+        showToast("success", "You logged out")
+    }
+
     return (
         <div className="sidebar">
             <div>
@@ -32,10 +43,10 @@ const Sidebar = () => {
                 <Link to="/profile">
                     <div className="align-center">
                         <i className="fas fa-user-circle"></i>
-                        <span>Profile</span>
+                        <span>{`${user?.firstName} ${user?.lastName}`}</span>
                     </div>
                 </Link>
-                <i className="fas fa-sign-out-alt"></i>
+                <i className="fas fa-sign-out-alt" onClick={logoutHandler}></i>
             </div>
 
         </div>

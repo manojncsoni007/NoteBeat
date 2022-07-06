@@ -1,0 +1,40 @@
+.profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    top: 5rem;
+    width: 20rem;
+    padding: 1rem;
+    border: 1px solid var(--silver);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.profile-container h3{
+    text-align: center;
+    font-size: 1.3rem;
+}
+.profile-container p{
+    font-weight: 500;
+}
+.profile-field{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.logout-btn{
+    cursor: pointer;
+    width: 4rem;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+}

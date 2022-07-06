@@ -23,12 +23,6 @@ const sidebarData = [
         icon: 'fas fa-trash',
         _id: 4
     },
-    {
-        title: 'Profile',
-        path: '/',
-        icon: 'fas fa-user',
-        _id: 5
-    },
 ]
 
 export {sidebarData}

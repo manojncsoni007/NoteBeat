@@ -1,47 +1,51 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { showToast } from "../utils/toast";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState("");
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
     const location = useLocation();
     const navigate = useNavigate();
 
     const loginUser = async (email, password) => {
         try {
             const {
-                data: { user, encodedToken }, status
+                data: { foundUser, encodedToken }, status
             } = await axios.post('/api/auth/login', { email, password });
             if (status === 200) {
+                console.log(foundUser);
                 setToken(encodedToken);
                 setIsLoggedIn(true);
-                setUser(user);
+                setUser(foundUser);
                 navigate("/home");
                 localStorage.setItem("token", encodedToken);
+                showToast("success","Logged in successfully")
             }
         } catch (error) {
-            console.log(error);
+            showToast("error",error)
         }
     }
 
     const signupUser = async (firstName, lastName, email, password,) => {
         try {
             const {
-                data: { user, encodedToken }
+                data: { createdUser, encodedToken }
             } = await axios.post('/api/auth/signup', {
                 firstName, lastName, email, password
             });
             setIsLoggedIn(true);
             setToken(encodedToken);
             localStorage.setItem("token", encodedToken);
-            setUser(user);
+            setUser(createdUser);
             navigate('/home');
+            showToast("success","Signed up successfully")
         } catch (error) {
-           console.log(error);
+            showToast("error",error)
         }
     }
 

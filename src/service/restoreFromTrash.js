@@ -1,4 +1,5 @@
 import axios from "axios"
+import { showToast } from "../utils/toast"
 
 const restoreFromTrash = async (_id, token, featureStateDispatch) => {
     try {
@@ -7,8 +8,9 @@ const restoreFromTrash = async (_id, token, featureStateDispatch) => {
                 {},
                 { headers: { authorization: token } })
         featureStateDispatch({ type: "RESTORE_FROM_TRASH", payload: { notes, trash } })
+        showToast("success","Restored from trash")
     } catch (error) {
-        console.log(error)
+        showToast("error",error)
     }
 }
 
