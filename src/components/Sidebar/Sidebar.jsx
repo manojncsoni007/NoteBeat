@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth, useFeature } from '../../context';
 import { sidebarData } from '../../static-data'
+import { showToast } from '../../utils/toast';
 import './Sidebar.css'
 
 const getActiveStyle = ({ isActive }) => ({
@@ -18,6 +19,7 @@ const Sidebar = () => {
         setUser(null);
         setToken("");
         localStorage.removeItem("token");
+        showToast("success", "You logged out")
     }
 
     return (

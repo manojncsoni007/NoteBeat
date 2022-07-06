@@ -1,6 +1,7 @@
 import React from 'react'
 import { Sidebar } from '../../components'
 import { useAuth } from '../../context'
+import { showToast } from '../../utils/toast'
 import './Profile.css'
 
 const Profile = () => {
@@ -10,6 +11,7 @@ const Profile = () => {
         setUser(null);
         setToken("");
         localStorage.removeItem("token");
+        showToast("success", "You logged out")
     }
     return (
         <>

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { showToast } from "../utils/toast"
 
 const addToArchive = async (_id, note, token, featureStateDispatch) => {
     try {
@@ -7,9 +8,10 @@ const addToArchive = async (_id, note, token, featureStateDispatch) => {
                 { note },
                 { headers: { authorization: token } })
         featureStateDispatch({ type: "ADD_TO_ARCHIVE", payload: { notes, archives } })
+        showToast("success", "Moved to archive")
 
     } catch (error) {
-        console.log(error)
+        showToast("error",error)
     }
 }
 

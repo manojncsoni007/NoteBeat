@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { showToast } from "../utils/toast";
 
 const AuthContext = createContext();
 
@@ -23,9 +24,10 @@ const AuthProvider = ({ children }) => {
                 setUser(foundUser);
                 navigate("/home");
                 localStorage.setItem("token", encodedToken);
+                showToast("success","Logged in successfully")
             }
         } catch (error) {
-            console.log(error);
+            showToast("error",error)
         }
     }
 
@@ -41,8 +43,9 @@ const AuthProvider = ({ children }) => {
             localStorage.setItem("token", encodedToken);
             setUser(createdUser);
             navigate('/home');
+            showToast("success","Signed up successfully")
         } catch (error) {
-           console.log(error);
+            showToast("error",error)
         }
     }
 
