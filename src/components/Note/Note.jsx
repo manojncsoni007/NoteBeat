@@ -10,7 +10,7 @@ const Note = ({ note }) => {
   const { token } = useAuth();
   const { pathname } = useLocation();
   const { _id, title, content, isPinnedNote, color, priority, tags, created } = note;
-  const { setShowAddNote, featureStateDispatch } = useFeature();
+  const { setEditNoteContent,setEditId, setEditNote, setShowAddNote, featureStateDispatch } = useFeature();
 
   const pinHandler = (_id) => {
     featureStateDispatch({ type: "TOGGLE_PIN_NOTES", payload: _id })
@@ -31,7 +31,13 @@ const Note = ({ note }) => {
     restoreFromTrash(_id, token, featureStateDispatch);
   }
   const deleteTrashHandler = () => {
-    deleteFromTrash(_id,token,featureStateDispatch);
+    deleteFromTrash(_id, token, featureStateDispatch);
+  }
+  const updateNoteHandler = () => {
+    setShowAddNote(true);
+    setEditNote(true);
+    setEditId(_id);
+    setEditNoteContent(note);
   }
 
   return (
@@ -65,7 +71,7 @@ const Note = ({ note }) => {
           <div className="footer-icon">
             {pathname === "/home" &&
               <>
-                {/* will do later <i className="fas fa-edit" onClick={() => updateNoteHandler()}></i> */}
+                <i className="fas fa-edit" onClick={() => updateNoteHandler()}></i>
                 <i className="fas fa-archive" onClick={() => addToArchiveHandler()}></i>
                 <i className="fas fa-trash" onClick={() => addToTrashHandler()}></i>
               </>

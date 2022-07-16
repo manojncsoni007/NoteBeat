@@ -4,6 +4,10 @@ const featureReducer = (state, { type, payload }) => {
             return { ...state, labels: [...state.labels, { ...payload }] }
         case "ADD_NOTES":
             return { ...state, notes: payload }
+        case "UPDATE_NOTES":
+            return {
+                ...state, notes: payload
+            }
         case "ADD_TO_ARCHIVE":
             return {
                 ...state,
