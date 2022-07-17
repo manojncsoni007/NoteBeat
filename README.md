@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://vacay-notes.netlify.app/" text-decoration:none>
+  <a href="https://notebeat.netlify.app/">
     <h3 color="blue">NoteBeat</h3>
   </a>
 </p>
@@ -34,7 +34,4 @@ https://notebeat.netlify.app/.
 - useContext + useReducer for state management
 - Vanilla CSS 
 
-## Screenshot
-
-<img src="https://user-images.githubusercontent.com/64492646/175361165-1f58ff9c-a912-4e58-bb7c-93805bacf46d.png"/>
 
