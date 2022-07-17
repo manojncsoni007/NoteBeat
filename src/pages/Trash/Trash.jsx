@@ -16,9 +16,15 @@ const Trash = () => {
                         <div className="trash-container">
                             <h2>Trash</h2>
                             <div className="trash-note-container">
-                                {trash.map((item) => (
-                                    <Note key={item._id} note={item} />
-                                ))}
+                                {
+                                    trash.length > 0 ? (trash.map((item) => (
+                                        <Note key={item._id} note={item} />
+                                    ))) : (
+                                        <div className="note-info">
+                                            <p>No Notes Found!</p>
+                                        </div>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>
@@ -29,3 +35,4 @@ const Trash = () => {
 }
 
 export { Trash }
+

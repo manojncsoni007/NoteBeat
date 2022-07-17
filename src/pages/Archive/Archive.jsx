@@ -16,9 +16,15 @@ const Archive = () => {
             <div className="archive-container">
               <h2>Archived Notes</h2>
               <div className="archive-note-container">
-                {archive.map((item) => (
-                  <Note key={item._id} note={item} />
-                ))}
+                { archive.length > 0 ? (
+                  archive.map((item) => (
+                    <Note key={item._id} note={item} />
+                  ))
+                ) : (
+                  <div className="note-info">
+                    <p>No Notes Found!</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
