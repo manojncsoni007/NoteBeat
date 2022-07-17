@@ -1,7 +1,7 @@
 import axios from "axios"
 import { showToast } from "../utils/toast";
 
-const updateNote = async (id, noteObj, token, featureStateDispatch, setShowAddNote,setEditNote,setEditId) => {
+const updateNote = async (id, noteObj, token, featureStateDispatch, setShowAddNote,setEditNote,setEditId,noteStateDispatch) => {
     try {
         const { data:
             { notes } } = await axios.post(`/api/notes/${id}`,
@@ -12,6 +12,7 @@ const updateNote = async (id, noteObj, token, featureStateDispatch, setShowAddNo
         showToast("success", "Note updated!!")
         setEditNote(false);
         setEditId("");
+        noteStateDispatch({ type: "RESET" })
 
     } catch (error) {
         console.log(error)

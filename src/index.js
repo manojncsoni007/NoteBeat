@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from 'react-router-dom'
-import { AuthProvider, FeatureProvider } from "./context";
+import { AuthProvider, FeatureProvider, NoteProvider } from "./context";
 
 // Call make Server
 makeServer();
@@ -14,7 +14,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <FeatureProvider>
-          <App />
+          <NoteProvider>
+            <App />
+          </NoteProvider>
         </FeatureProvider>
       </AuthProvider>
     </BrowserRouter>

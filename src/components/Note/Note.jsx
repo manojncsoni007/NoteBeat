@@ -2,7 +2,7 @@ import React from 'react'
 import { BsPin, BsFillPinFill } from "react-icons/bs";
 import { useLocation } from 'react-router-dom';
 import parse from 'html-react-parser';
-import { useAuth, useFeature } from '../../context';
+import { useAuth, useFeature, useNote } from '../../context';
 import { addToArchive, addToTrash, deleteFromArchive, deleteFromTrash, restoreFromArchive, restoreFromTrash } from '../../service';
 import './Note.css'
 
@@ -10,8 +10,8 @@ const Note = ({ note }) => {
   const { token } = useAuth();
   const { pathname } = useLocation();
   const { _id, title, content, isPinnedNote, color, priority, tags, created } = note;
-  const { setEditNoteContent,setEditId, setEditNote, setShowAddNote, featureStateDispatch } = useFeature();
-
+  const { setEditNoteContent, setEditId, setEditNote, setShowAddNote, featureStateDispatch } = useFeature();
+  const { noteStateDispatch } = useNote();
   const pinHandler = (_id) => {
     featureStateDispatch({ type: "TOGGLE_PIN_NOTES", payload: _id })
   }
@@ -38,6 +38,8 @@ const Note = ({ note }) => {
     setEditNote(true);
     setEditId(_id);
     setEditNoteContent(note);
+    noteStateDispatch({ type: "UPDATE_NOTE", payload: note})
+
   }
 
   return (

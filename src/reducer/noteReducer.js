@@ -1,3 +1,5 @@
+
+
 const noteReducer = (state, { type, payload }) => {
     switch (type) {
         case "SET_TITLE":
@@ -14,6 +16,24 @@ const noteReducer = (state, { type, payload }) => {
             return { ...state, tags: state.tags.filter((tag) => tag !== payload) }
         case "SET_PRIORITY":
             return { ...state, priority: payload }
+        case "UPDATE_NOTE":
+            return {
+                isPinnedNote: payload.isPinnedNote,
+                title: payload.title,
+                content: payload.content,
+                color: payload.color,
+                priority: payload.priority,
+                tags: payload.tags
+            }
+        case "RESET":
+            return {
+                isPinnedNote: false,
+                title: "",
+                content: "",
+                color: "",
+                priority: "",
+                tags: []
+            }
         default:
             return state;
     }

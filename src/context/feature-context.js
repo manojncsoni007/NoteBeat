@@ -22,7 +22,6 @@ const FeatureProvider = ({ children }) => {
     })
 
     const { notes, trash, archive, labels, filters } = featureState;
-    console.log({editNoteContent});
     return (
         <FeatureContext.Provider
             value={{
