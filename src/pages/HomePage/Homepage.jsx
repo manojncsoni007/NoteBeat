@@ -1,7 +1,6 @@
 import React, { useState, useReducer } from 'react'
 import { AddNote, FilterModal, Note, Sidebar } from '../../components'
 import { useFeature } from '../../context'
-import { noteReducer } from '../../reducer'
 import { getFilterByLabels, getSortedByDate, getSortedByPriority } from '../../utils'
 import './Homepage.css'
 

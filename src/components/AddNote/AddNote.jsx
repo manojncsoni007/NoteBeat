@@ -1,9 +1,8 @@
-import React, { useReducer, useState } from 'react'
+import React, { useState } from 'react'
 import { v4 as uuid } from 'uuid';
 import JoditEditor from "jodit-react";
 import { BsPin, BsFillPinFill } from "react-icons/bs";
 import { useAuth, useFeature, useNote } from '../../context';
-// import { noteReducer } from '../../reducer';
 import { addNewNote, updateNote } from '../../service';
 import { ColorPalette } from '../ColorPalette/ColorPalette';
 import { Label } from '../Label/Label';
@@ -13,17 +12,10 @@ import "./AddNote.css"
 
 const AddNote = () => {
     const [showLabel, setShowLabel] = useState(false);
-    const { editId, editNote, editNoteContent, setEditNote, setEditId, setShowAddNote, showColorPallete, setShowColorPallete, featureStateDispatch } = useFeature();
+    const { editId, editNote, setEditNote, setEditId, setShowAddNote, showColorPallete, setShowColorPallete, featureStateDispatch } = useFeature();
     const { token } = useAuth();
-    const {noteState, noteStateDispatch} = useNote();
-    // const [noteState, noteStateDispatch] = useReducer(noteReducer, {
-    //     isPinnedNote: false,
-    //     title: "",
-    //     content: "",
-    //     color: "",
-    //     priority: "",
-    //     tags: [],
-    // })
+    const { noteState, noteStateDispatch } = useNote();
+
 
     const noteObj = {
         _id: uuid(),
@@ -44,8 +36,13 @@ const AddNote = () => {
             showToast("error", "Note can not be empty")
         }
     }
+    
     const updateNoteHandler = async () => {
-        updateNote(editId, noteObj, token, featureStateDispatch, setShowAddNote, setEditNote, setEditId, noteStateDispatch);
+        if (noteState?.title?.trim() !== "" && noteState?.content?.trim() !== "") {
+            updateNote(editId, noteObj, token, featureStateDispatch, setShowAddNote, setEditNote, setEditId, noteStateDispatch);
+        } else {
+            showToast("error", "Note can not be empty")
+        }
     }
 
     const cancelAddNote = () => {

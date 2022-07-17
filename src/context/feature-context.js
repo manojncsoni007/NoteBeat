@@ -7,7 +7,6 @@ const FeatureProvider = ({ children }) => {
     const [showAddNote, setShowAddNote] = useState(false);
     const [editNote, setEditNote] = useState(false)
     const [editId, setEditId] = useState();
-    const [editNoteContent, setEditNoteContent] = useState();
     const [showColorPallete, setShowColorPallete] = useState(false);
     const [featureState, featureStateDispatch] = useReducer(featureReducer, {
         notes: [],
@@ -34,8 +33,6 @@ const FeatureProvider = ({ children }) => {
                 editId,
                 showAddNote,
                 showColorPallete,
-                editNoteContent,
-                setEditNoteContent,
                 featureStateDispatch,
                 setShowColorPallete,
                 setShowAddNote,

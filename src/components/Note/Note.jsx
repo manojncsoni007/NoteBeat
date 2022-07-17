@@ -10,7 +10,7 @@ const Note = ({ note }) => {
   const { token } = useAuth();
   const { pathname } = useLocation();
   const { _id, title, content, isPinnedNote, color, priority, tags, created } = note;
-  const { setEditNoteContent, setEditId, setEditNote, setShowAddNote, featureStateDispatch } = useFeature();
+  const { setEditId, setEditNote, setShowAddNote, featureStateDispatch } = useFeature();
   const { noteStateDispatch } = useNote();
   const pinHandler = (_id) => {
     featureStateDispatch({ type: "TOGGLE_PIN_NOTES", payload: _id })
@@ -37,7 +37,6 @@ const Note = ({ note }) => {
     setShowAddNote(true);
     setEditNote(true);
     setEditId(_id);
-    setEditNoteContent(note);
     noteStateDispatch({ type: "UPDATE_NOTE", payload: note})
 
   }
