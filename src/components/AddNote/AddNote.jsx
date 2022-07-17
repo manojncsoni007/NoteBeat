@@ -1,27 +1,21 @@
-import React, { useReducer, useState } from 'react'
-import axios from "axios"
+import React, { useState } from 'react'
 import { v4 as uuid } from 'uuid';
-import { useAuth, useFeature } from '../../context';
 import JoditEditor from "jodit-react";
 import { BsPin, BsFillPinFill } from "react-icons/bs";
+import { useAuth, useFeature, useNote } from '../../context';
+import { addNewNote, updateNote } from '../../service';
 import { ColorPalette } from '../ColorPalette/ColorPalette';
 import { Label } from '../Label/Label';
-import { noteReducer } from '../../reducer';
+import { showToast } from '../../utils/toast';
+
 import "./AddNote.css"
-import { addNewNote } from '../../service/addNewNote';
 
 const AddNote = () => {
     const [showLabel, setShowLabel] = useState(false);
-    const { setShowAddNote, showColorPallete, setShowColorPallete, featureStateDispatch } = useFeature();
+    const { editId, editNote, setEditNote, setEditId, setShowAddNote, showColorPallete, setShowColorPallete, featureStateDispatch } = useFeature();
     const { token } = useAuth();
-    const [noteState, noteStateDispatch] = useReducer(noteReducer, {
-        isPinnedNote: false,
-        title: "",
-        content: "",
-        color: "",
-        priority: "",
-        tags: [],
-    })
+    const { noteState, noteStateDispatch } = useNote();
+
 
     const noteObj = {
         _id: uuid(),
@@ -34,16 +28,26 @@ const AddNote = () => {
         created: new Date().toLocaleString()
     }
 
+
     const addNoteHandler = async () => {
         if (noteState?.title?.trim() !== "" && noteState?.content?.trim() !== "") {
-            addNewNote(noteObj, token, featureStateDispatch, setShowAddNote);
+            addNewNote(noteObj, token, featureStateDispatch, setShowAddNote, noteStateDispatch);
         } else {
-            console.log('note can not be empty');
+            showToast("error", "Note can not be empty")
+        }
+    }
+    
+    const updateNoteHandler = async () => {
+        if (noteState?.title?.trim() !== "" && noteState?.content?.trim() !== "") {
+            updateNote(editId, noteObj, token, featureStateDispatch, setShowAddNote, setEditNote, setEditId, noteStateDispatch);
+        } else {
+            showToast("error", "Note can not be empty")
         }
     }
 
     const cancelAddNote = () => {
         setShowAddNote(false);
+        setEditNote(false)
     }
 
     return (
@@ -80,7 +84,7 @@ const AddNote = () => {
                                 className="dropdown"
                                 value={noteState.priority}
                                 onChange={(e) => noteStateDispatch({ type: "SET_PRIORITY", payload: e.target.value })}>
-                                    <option value="">-- Select Priority --</option>
+                                <option value="">-- Select Priority --</option>
                                 <option value="HIGH">High Priority</option>
                                 <option value="MEDIUM">Medium Priority</option>
                                 <option value="LOW">Low Priority</option>
@@ -99,7 +103,11 @@ const AddNote = () => {
 
                     <div className="btn-group">
                         <button className='cancel-btn' onClick={cancelAddNote}>Cancel</button>
-                        <button className='add-btn' onClick={addNoteHandler}>Add</button>
+                        {
+                            editNote ? <button className='add-btn' onClick={updateNoteHandler}>Update</button> :
+                                <button className='add-btn' onClick={addNoteHandler}>Add</button>
+                        }
+
                     </div>
                 </div>
             </div >

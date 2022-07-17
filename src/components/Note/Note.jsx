@@ -2,7 +2,7 @@ import React from 'react'
 import { BsPin, BsFillPinFill } from "react-icons/bs";
 import { useLocation } from 'react-router-dom';
 import parse from 'html-react-parser';
-import { useAuth, useFeature } from '../../context';
+import { useAuth, useFeature, useNote } from '../../context';
 import { addToArchive, addToTrash, deleteFromArchive, deleteFromTrash, restoreFromArchive, restoreFromTrash } from '../../service';
 import './Note.css'
 
@@ -10,8 +10,8 @@ const Note = ({ note }) => {
   const { token } = useAuth();
   const { pathname } = useLocation();
   const { _id, title, content, isPinnedNote, color, priority, tags, created } = note;
-  const { setShowAddNote, featureStateDispatch } = useFeature();
-
+  const { setEditId, setEditNote, setShowAddNote, featureStateDispatch } = useFeature();
+  const { noteStateDispatch } = useNote();
   const pinHandler = (_id) => {
     featureStateDispatch({ type: "TOGGLE_PIN_NOTES", payload: _id })
   }
@@ -31,7 +31,14 @@ const Note = ({ note }) => {
     restoreFromTrash(_id, token, featureStateDispatch);
   }
   const deleteTrashHandler = () => {
-    deleteFromTrash(_id,token,featureStateDispatch);
+    deleteFromTrash(_id, token, featureStateDispatch);
+  }
+  const updateNoteHandler = () => {
+    setShowAddNote(true);
+    setEditNote(true);
+    setEditId(_id);
+    noteStateDispatch({ type: "UPDATE_NOTE", payload: note})
+
   }
 
   return (
@@ -65,7 +72,7 @@ const Note = ({ note }) => {
           <div className="footer-icon">
             {pathname === "/home" &&
               <>
-                {/* will do later <i className="fas fa-edit" onClick={() => updateNoteHandler()}></i> */}
+                <i className="fas fa-edit" onClick={() => updateNoteHandler()}></i>
                 <i className="fas fa-archive" onClick={() => addToArchiveHandler()}></i>
                 <i className="fas fa-trash" onClick={() => addToTrashHandler()}></i>
               </>

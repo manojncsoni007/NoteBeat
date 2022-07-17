@@ -18,7 +18,6 @@ const AuthProvider = ({ children }) => {
                 data: { foundUser, encodedToken }, status
             } = await axios.post('/api/auth/login', { email, password });
             if (status === 200) {
-                console.log(foundUser);
                 setToken(encodedToken);
                 setIsLoggedIn(true);
                 setUser(foundUser);

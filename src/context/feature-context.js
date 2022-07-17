@@ -5,6 +5,8 @@ const FeatureContext = createContext();
 
 const FeatureProvider = ({ children }) => {
     const [showAddNote, setShowAddNote] = useState(false);
+    const [editNote, setEditNote] = useState(false)
+    const [editId, setEditId] = useState();
     const [showColorPallete, setShowColorPallete] = useState(false);
     const [featureState, featureStateDispatch] = useReducer(featureReducer, {
         notes: [],
@@ -27,11 +29,15 @@ const FeatureProvider = ({ children }) => {
                 notes,
                 trash,
                 archive,
+                editNote,
+                editId,
                 showAddNote,
                 showColorPallete,
                 featureStateDispatch,
                 setShowColorPallete,
-                setShowAddNote
+                setShowAddNote,
+                setEditNote,
+                setEditId
             }}>
             {children}
         </FeatureContext.Provider>

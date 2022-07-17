@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import { AddNote, FilterModal, Note, Sidebar } from '../../components'
 import { useFeature } from '../../context'
 import { getFilterByLabels, getSortedByDate, getSortedByPriority } from '../../utils'
@@ -8,12 +8,14 @@ const Homepage = () => {
   const [showFilterModal, setShowFilterModal] = useState(false);
   const { notes, filters, showAddNote, featureStateDispatch } = useFeature();
   const { sortByDate, sortByPriority, label } = filters;
+  
 
   const dateFilter = getSortedByDate(notes, sortByDate);
-  const priorityFilter = getSortedByPriority(dateFilter,sortByPriority);
+  const priorityFilter = getSortedByPriority(dateFilter, sortByPriority);
   const labelFilter = getFilterByLabels(priorityFilter, label);
   const pinnedNotes = labelFilter.filter((item) => item.isPinnedNote);
   const unPinnedNotes = labelFilter.filter((item) => !item.isPinnedNote);
+
   return (
     <>
       {
@@ -26,7 +28,7 @@ const Homepage = () => {
           </aside>
           <section className="main-page">
             <div className='home_header'>
-              {showAddNote && <AddNote />}
+              {showAddNote && <AddNote/>}
               <button className='filter-btn' onClick={() => setShowFilterModal(true)}>
                 <i className="fas fa-filter"></i>
                 Filter Notes
