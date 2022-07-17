@@ -34,5 +34,7 @@ https://notebeat.netlify.app/.
 - useContext + useReducer for state management
 - Vanilla CSS 
 
-Screenshot:
+## Screenshot
+
+<img src="https://user-images.githubusercontent.com/64492646/175361165-1f58ff9c-a912-4e58-bb7c-93805bacf46d.png"/>
 
