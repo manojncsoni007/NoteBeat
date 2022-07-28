@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
                 showToast("success","Logged in successfully")
             }
         } catch (error) {
-            showToast("error",error)
+            showToast("error",error.response.data.errors[0]);
         }
     }
 
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
             navigate('/home');
             showToast("success","Signed up successfully")
         } catch (error) {
-            showToast("error",error)
+            showToast("error",error.response.data.errors[0]);
         }
     }
 

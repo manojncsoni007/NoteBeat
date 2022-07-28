@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState } from 'react'
 import { AddNote, FilterModal, Note, Sidebar } from '../../components'
 import { useFeature } from '../../context'
 import { getFilterByLabels, getSortedByDate, getSortedByPriority } from '../../utils'
@@ -6,7 +6,7 @@ import './Homepage.css'
 
 const Homepage = () => {
   const [showFilterModal, setShowFilterModal] = useState(false);
-  const { notes, filters, showAddNote, featureStateDispatch } = useFeature();
+  const { notes, filters, showAddNote} = useFeature();
   const { sortByDate, sortByPriority, label } = filters;
   
 

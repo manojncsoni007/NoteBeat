@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { v4 as uuid } from 'uuid';
 import { useFeature } from '../../context';
+import { showToast } from '../../utils/toast';
 import './Label.css'
 
 const Label = ({ noteState, noteStateDispatch }) => {
@@ -10,13 +11,18 @@ const Label = ({ noteState, noteStateDispatch }) => {
     const addLabelHandler = () => {
         const newLabel = { _id: uuid(), label: labelName };
         const isLabelExist = labels.some((item) => item.label == labelName);
-        if (!isLabelExist) {
-            featureStateDispatch({ type: "ADD_LABELS", payload: newLabel });
-            setLabelName("");
+        if (labelName.trim() !== "") {
+            if (!isLabelExist) {
+                featureStateDispatch({ type: "ADD_LABELS", payload: newLabel });
+                setLabelName("");
+            } else {
+                showToast('error', 'label already exist');
+                setLabelName("");
+            }
         } else {
-            console.log('label already exist');
-            setLabelName("");
+            showToast('error', 'Enter label name');
         }
+
 
     }
 

@@ -38,7 +38,6 @@ const Note = ({ note }) => {
     setEditNote(true);
     setEditId(_id);
     noteStateDispatch({ type: "UPDATE_NOTE", payload: note})
-
   }
 
   return (
